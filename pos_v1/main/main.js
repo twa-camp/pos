@@ -1,4 +1,5 @@
 //TODO: Please write code in this file.
+//###################start of parseInput#################################
 function parseBarcode(barcodes){
     var goods = new Array() ;
     
@@ -52,4 +53,26 @@ function shortBarcode( bc , goods ){
 //	document.write(GOshort);
 	goods.push(GOshort);
     }
+}
+
+//###################################end of parseInput#########################
+
+//#########################start of GetDetail########################
+function getDetail( goods , allItems){
+    var Details = new Array();
+//    document.write(goods.length + " " + allItems.length + "<br/>");
+    for( var i = 0 ; i < goods.length ; i++){
+	for (var j = 0 ; j < allItems.length ; j++){
+//	    document.write(goods[i].barcode + "<br/>" + allItems[j].barcode + "<br/>");
+	    if( goods[i].barcode == allItems[j].barcode){
+		var detail = {
+		    iterm : allItems[j],
+		    count : goods[i].count
+		}
+		Details.push(detail);
+	    }
+	}
+    }
+  //  document.write(Details);
+    return Details;
 }
