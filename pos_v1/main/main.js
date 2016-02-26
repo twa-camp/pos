@@ -130,3 +130,28 @@ function attachFlag( cart , promotions){
 //###################end of parsePromotion #############################
 
 //#################start of formatReceipt ##########################
+function formatReceipt(billing){
+    var Receipt =  '***<没钱赚商店>收据***\n';
+    var total = 0;
+    var totalSaved = 0;
+    var subTotal = 0 ;
+
+  //  for( var i = 0 ; i < billing.length ; i++){
+//	document.write(billing[i].goods.count + " " +billing[i].goods.item.price + " "+ billing[i].saving + "<br/>");
+//    }
+    
+    for ( var i = 0 ; i < billing.length ; i++){
+	subTotal = billing[i].goods.count * billing[i].goods.item.price - billing[i].saving ;
+
+//	document.write(subTotal + "<br/>");
+	Receipt += '名称：' + billing[i].goods.item.name + '，数量：' + billing[i].goods.count + billing[i].goods.item.unit +'，单价：' + billing[i].goods.item.price.toFixed(2) + '(元)，小计：' + subTotal.toFixed(2) +'(元)\n';
+	total += subTotal
+	totalSaved += billing[i].saving;
+    }
+    Receipt += '----------------------\n';
+    Receipt += '总计：' + total.toFixed(2) + '(元)\n' ;
+    Receipt += '节省：' + totalSaved.toFixed(2) +'(元)\n' ;
+    Receipt +=  '**********************';
+ 
+    return Receipt;
+}
