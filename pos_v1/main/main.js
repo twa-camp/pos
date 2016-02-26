@@ -76,3 +76,57 @@ function getDetail( goods , allItems){
   //  document.write(Details);
     return Details;
 }
+
+
+//##############################end of getDetail #####################
+
+//########################start of parsePromotion############
+
+function parsePromotion( cart , promotions){
+    var discounttedCart = new Array();
+    var disconteed = new Object();
+    var savedMoney;
+    
+    attachFlag(cart,promotions);
+
+  //  for (var i = 0 ; i < cart.length ; i++){
+//	document.write(cart[i].count + " " + cart[i].promotion + "<br/>");
+  //  }
+    
+    for(var i = 0 ; i < cart.length ; i++) {
+	if(cart[i].promotion == "BUY_TWO_GET_ONE_FREE"){
+	    var savedCount =parseInt( cart[i].count / 3);
+	 //   document.write(savedCount + "<br/>");
+	    savedMoney = savedCount * cart[i].item.price;
+	}
+	else{
+	    savedMoney = 0 ;
+	}
+	discountted ={
+	    goods: {
+		item : cart[i].item,
+		count :cart[i].count,
+	    },
+	    saving : savedMoney
+	};
+	discounttedCart.push(discountted);
+    }
+    //document.write(discounttedCart[0].saving);
+    return discounttedCart;
+}
+
+function attachFlag( cart , promotions){
+    for( var i = 0 ; i < promotions.length ; i++){
+	for(var j = 0 ; j < cart.length ; j++){
+	    for(var x = 0 ; x < promotions[i].barcodes.length; x++){
+		if(cart[j].item.barcode == promotions[i].barcodes[x]){
+		    cart[j].promotion = promotions[i].type
+		}
+	    }
+	}
+    }
+}
+
+//###################end of parsePromotion #############################
+
+//#################start of formatReceipt ##########################
