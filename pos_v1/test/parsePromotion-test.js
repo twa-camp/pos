@@ -40,7 +40,7 @@ describe('parsePromotion',function(){
 
 	var expectBilling = [
 	    {
-		good:{
+		goods:{
 		    item: {
 			barcode:'ITEM000001',
 			name:'雪碧',
@@ -49,10 +49,10 @@ describe('parsePromotion',function(){
 		    },
 		    count : 5.00
 		},
-		saved : 3.00
+		saving : 3.00
 	    },
 	    {
-		good:{
+		goods:{
 		    item: {
 			barcode:'ITEM000003',
 			name:'荔枝',
@@ -61,10 +61,10 @@ describe('parsePromotion',function(){
 		    },
 		    count : 2
 		},
-		saved : 0.00
+		saving : 0.00
 	    },
 	    {
-		good:{
+		goods:{
 		    item:{
 			barcode:'ITEM000005',
 			name:'方便面',
@@ -73,9 +73,9 @@ describe('parsePromotion',function(){
 		    },
 		    count : 3
 		},
-		saved : 4.50
+		saving : 4.50
 	    }
 	];
-	expect(expectBilling+"").toEqual(billing+"");
+	expect(expectBilling).toEqual(billing);
     });
 });

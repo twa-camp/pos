@@ -47,7 +47,7 @@ describe('getDetail', function(){
 	    }
 	];
 
-	expect(expectDetail+"").toEqual(Detail+"");
+	expect(expectDetail).toEqual(Detail);
     });
 
 });

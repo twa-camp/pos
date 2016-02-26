@@ -25,7 +25,7 @@ describe('parseBarcode', function(){
 	    {barcode:'ITEM000003', count:2},
 	    {barcode:'ITEM000005', count:3}
 	];
-	expect(goods + "" ).toEqual(expectGoods + "");
+	expect(goods ).toEqual(expectGoods );
     });
 
 });
